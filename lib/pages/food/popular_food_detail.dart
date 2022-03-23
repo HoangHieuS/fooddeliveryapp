@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/routes/route_helper.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_column.dart';
@@ -7,12 +11,20 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
 import 'package:food_delivery/widgets/icon_and_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
+import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetail({
+    Key? key,
+    required this.pageId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -24,10 +36,12 @@ class PopularFoodDetail extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.popularFoodImgSize,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/image/food0.png'),
+                  image: NetworkImage(AppConstants.BASE_URL +
+                      AppConstants.UPLOAD_URL +
+                      product.img!),
                 ),
               ),
             ),
@@ -39,8 +53,12 @@ class PopularFoodDetail extends StatelessWidget {
             right: Dimensions.width20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(icon: Icons.arrow_back_ios),
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getInitial());
+                    },
+                    child: AppIcon(icon: Icons.arrow_back_ios)),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
@@ -66,15 +84,13 @@ class PopularFoodDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppColumn(text: 'Chinese Side'),
+                  AppColumn(text: product.name!),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: 'Introduce'),
                   SizedBox(height: Dimensions.height20),
-                  const Expanded(
+                  Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableTextWidget(
-                          text:
-                              'Biryani là một món cơm trộn có nguồn gốc từ những người Hồi giáo ở tiểu lục địa Ấn Độ. Món ăn này nấu từ gạo (gạo hạt dài và rời) kết hợp với những gia vị đặc trưng của Ấn Độ trộn với thịt thường là thịt gà, thịt dê, thịt cừu, hải sản như tôm, cá, và đôi khi ở một số vùng thì thàn phần gồm trứng hoặc rau củ như khoai tây được thêm vào. Biryani là món ăn phổ biến trên khắp tiểu lục địa Ấn Độ, món này đã trở nên phổ biến ở Nam Ấn Độ, đặc biệt là ở Tamil Nadu, Andhra Pradesh và Telangana, món Biryani này cũng phổ biến ở các khu vực khác như Kurdistan ở Iraq. Từ Biryani là một từ có nguồn gốc từ ngôn ngữ Ba Tư, được sử dụng làm ngôn ngữ chính thức ở các vùng khác nhau của Ấn Độ thời trung cổ dưới các triều đại Hồi giáo. Một giả thuyết cho rằng nó có nguồn gốc từ birinj (برنج) là từ tiếng Ba Tư có nghĩa là gạo. Một giả thuyết khác cho rằng nó có nguồn gốc từ biryan hoặc beriyan (بریان), có nghĩa là "chiên" hoặc "thịt nướng".'),
+                      child: ExpandableTextWidget(text: product.description),
                     ),
                   ),
                 ],
@@ -136,7 +152,7 @@ class PopularFoodDetail extends StatelessWidget {
                 right: Dimensions.width20,
               ),
               child: BigText(
-                text: '\$10 | Add to cart',
+                text: '\$ ${product.price!} | Add to cart',
                 color: Colors.white,
               ),
               decoration: BoxDecoration(

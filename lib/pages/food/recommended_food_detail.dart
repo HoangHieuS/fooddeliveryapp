@@ -1,25 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
+import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(icon: Icons.clear),
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: AppIcon(icon: Icons.clear),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
@@ -33,7 +47,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 ),
                 child: Center(
                   child: BigText(
-                    text: 'Chinese Side',
+                    text: product.name!,
                     size: Dimensions.font26,
                   ),
                 ),
@@ -50,8 +64,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/image/food0.png',
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -63,9 +77,8 @@ class RecommendedFoodDetail extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(
                       left: Dimensions.width20, right: Dimensions.width20),
-                  child: const ExpandableTextWidget(
-                    text:
-                        'Biryani là một món cơm trộn có nguồn gốc từ những người Hồi giáo ở tiểu lục địa Ấn Độ. Món ăn này nấu từ gạo (gạo hạt dài và rời) kết hợp với những gia vị đặc trưng của Ấn Độ trộn với thịt thường là thịt gà, thịt dê, thịt cừu, hải sản như tôm, cá, và đôi khi ở một số vùng thì thàn phần gồm trứng hoặc rau củ như khoai tây được thêm vào. Biryani là món ăn phổ biến trên khắp tiểu lục địa Ấn Độ, món này đã trở nên phổ biến ở Nam Ấn Độ, đặc biệt là ở Tamil Nadu, Andhra Pradesh và Telangana, món Biryani này cũng phổ biến ở các khu vực khác như Kurdistan ở Iraq. Từ Biryani là một từ có nguồn gốc từ ngôn ngữ Ba Tư, được sử dụng làm ngôn ngữ chính thức ở các vùng khác nhau của Ấn Độ thời trung cổ dưới các triều đại Hồi giáo. Một giả thuyết cho rằng nó có nguồn gốc từ birinj (برنج) là từ tiếng Ba Tư có nghĩa là gạo. Một giả thuyết khác cho rằng nó có nguồn gốc từ biryan hoặc beriyan (بریان), có nghĩa là "chiên" hoặc "thịt nướng". Biryani là một món cơm trộn có nguồn gốc từ những người Hồi giáo ở tiểu lục địa Ấn Độ. Món ăn này nấu từ gạo (gạo hạt dài và rời) kết hợp với những gia vị đặc trưng của Ấn Độ trộn với thịt thường là thịt gà, thịt dê, thịt cừu, hải sản như tôm, cá, và đôi khi ở một số vùng thì thàn phần gồm trứng hoặc rau củ như khoai tây được thêm vào. Biryani là món ăn phổ biến trên khắp tiểu lục địa Ấn Độ, món này đã trở nên phổ biến ở Nam Ấn Độ, đặc biệt là ở Tamil Nadu, Andhra Pradesh và Telangana, món Biryani này cũng phổ biến ở các khu vực khác như Kurdistan ở Iraq. Từ Biryani là một từ có nguồn gốc từ ngôn ngữ Ba Tư, được sử dụng làm ngôn ngữ chính thức ở các vùng khác nhau của Ấn Độ thời trung cổ dưới các triều đại Hồi giáo. Một giả thuyết cho rằng nó có nguồn gốc từ birinj (برنج) là từ tiếng Ba Tư có nghĩa là gạo. Một giả thuyết khác cho rằng nó có nguồn gốc từ biryan hoặc beriyan (بریان), có nghĩa là "chiên" hoặc "thịt nướng". Biryani là một món cơm trộn có nguồn gốc từ những người Hồi giáo ở tiểu lục địa Ấn Độ. Món ăn này nấu từ gạo (gạo hạt dài và rời) kết hợp với những gia vị đặc trưng của Ấn Độ trộn với thịt thường là thịt gà, thịt dê, thịt cừu, hải sản như tôm, cá, và đôi khi ở một số vùng thì thàn phần gồm trứng hoặc rau củ như khoai tây được thêm vào. Biryani là món ăn phổ biến trên khắp tiểu lục địa Ấn Độ, món này đã trở nên phổ biến ở Nam Ấn Độ, đặc biệt là ở Tamil Nadu, Andhra Pradesh và Telangana, món Biryani này cũng phổ biến ở các khu vực khác như Kurdistan ở Iraq. Từ Biryani là một từ có nguồn gốc từ ngôn ngữ Ba Tư, được sử dụng làm ngôn ngữ chính thức ở các vùng khác nhau của Ấn Độ thời trung cổ dưới các triều đại Hồi giáo. Một giả thuyết cho rằng nó có nguồn gốc từ birinj (برنج) là từ tiếng Ba Tư có nghĩa là gạo. Một giả thuyết khác cho rằng nó có nguồn gốc từ biryan hoặc beriyan (بریان), có nghĩa là "chiên" hoặc "thịt nướng". Biryani là một món cơm trộn có nguồn gốc từ những người Hồi giáo ở tiểu lục địa Ấn Độ. Món ăn này nấu từ gạo (gạo hạt dài và rời) kết hợp với những gia vị đặc trưng của Ấn Độ trộn với thịt thường là thịt gà, thịt dê, thịt cừu, hải sản như tôm, cá, và đôi khi ở một số vùng thì thàn phần gồm trứng hoặc rau củ như khoai tây được thêm vào. Biryani là món ăn phổ biến trên khắp tiểu lục địa Ấn Độ, món này đã trở nên phổ biến ở Nam Ấn Độ, đặc biệt là ở Tamil Nadu, Andhra Pradesh và Telangana, món Biryani này cũng phổ biến ở các khu vực khác như Kurdistan ở Iraq. Từ Biryani là một từ có nguồn gốc từ ngôn ngữ Ba Tư, được sử dụng làm ngôn ngữ chính thức ở các vùng khác nhau của Ấn Độ thời trung cổ dưới các triều đại Hồi giáo. Một giả thuyết cho rằng nó có nguồn gốc từ birinj (برنج) là từ tiếng Ba Tư có nghĩa là gạo. Một giả thuyết khác cho rằng nó có nguồn gốc từ biryan hoặc beriyan (بریان), có nghĩa là "chiên" hoặc "thịt nướng". Biryani là một món cơm trộn có nguồn gốc từ những người Hồi giáo ở tiểu lục địa Ấn Độ. Món ăn này nấu từ gạo (gạo hạt dài và rời) kết hợp với những gia vị đặc trưng của Ấn Độ trộn với thịt thường là thịt gà, thịt dê, thịt cừu, hải sản như tôm, cá, và đôi khi ở một số vùng thì thàn phần gồm trứng hoặc rau củ như khoai tây được thêm vào. Biryani là món ăn phổ biến trên khắp tiểu lục địa Ấn Độ, món này đã trở nên phổ biến ở Nam Ấn Độ, đặc biệt là ở Tamil Nadu, Andhra Pradesh và Telangana, món Biryani này cũng phổ biến ở các khu vực khác như Kurdistan ở Iraq. Từ Biryani là một từ có nguồn gốc từ ngôn ngữ Ba Tư, được sử dụng làm ngôn ngữ chính thức ở các vùng khác nhau của Ấn Độ thời trung cổ dưới các triều đại Hồi giáo. Một giả thuyết cho rằng nó có nguồn gốc từ birinj (برنج) là từ tiếng Ba Tư có nghĩa là gạo. Một giả thuyết khác cho rằng nó có nguồn gốc từ biryan hoặc beriyan (بریان), có nghĩa là "chiên" hoặc "thịt nướng".',
+                  child: ExpandableTextWidget(
+                    text: product.description,
                   ),
                 ),
               ],
@@ -93,7 +106,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                   icon: Icons.remove,
                 ),
                 BigText(
-                  text: '\$12.88 ' + ' X ' + ' 0',
+                  text: '\$ ${product.price!} X  0',
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),
@@ -148,7 +161,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     right: Dimensions.width20,
                   ),
                   child: BigText(
-                    text: '\$10 | Add to cart',
+                    text: '\$ ${product.price!} | Add to cart',
                     color: Colors.white,
                   ),
                   decoration: BoxDecoration(
