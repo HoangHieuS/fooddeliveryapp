@@ -44,16 +44,16 @@ class RecommendedFoodDetail extends StatelessWidget {
                       Get.toNamed(RouteHelper.getInitial());
                     }
                   },
-                  child: AppIcon(icon: Icons.clear),
+                  child: const AppIcon(icon: Icons.clear),
                 ),
                 // AppIcon(icon: Icons.shopping_cart_outlined),
                 GetBuilder<PopularProductController>(
                   builder: (controller) {
                     return GestureDetector(
                       onTap: () {
-                        if (controller.totalItems >= 1) {
-                          Get.toNamed(RouteHelper.getCartPage());
-                        }
+                        // if (controller.totalItems >= 1) {
+                        Get.toNamed(RouteHelper.getCartPage());
+                        //}
                       },
                       child: Stack(
                         children: [
@@ -105,7 +105,7 @@ class RecommendedFoodDetail extends StatelessWidget {
               ],
             ),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(20),
+              preferredSize: const Size.fromHeight(20),
               child: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.only(

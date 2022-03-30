@@ -35,7 +35,8 @@ class _SplashPageState extends State<SplashScreen>
       parent: controller,
       curve: Curves.linear,
     );
-    Timer(Duration(seconds: 3), () => Get.toNamed(RouteHelper.getInitial()));
+    Timer(const Duration(seconds: 3),
+        () => Get.toNamed(RouteHelper.getInitial()));
 
     super.initState();
   }

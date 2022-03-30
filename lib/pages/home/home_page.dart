@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/colors.dart';
 // import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -16,19 +16,15 @@ class _HomePageState extends State<HomePage> {
   // late PersistentTabController _controller;
 
   List pages = [
-    MainFoodPage(),
+    const MainFoodPage(),
     Container(
-      child: Center(
+      child: const Center(
         child: Text('Next page'),
       ),
     ),
+    const CartHistory(),
     Container(
-      child: Center(
-        child: Text('Next next page'),
-      ),
-    ),
-    Container(
-      child: Center(
+      child: const Center(
         child: Text('Next next next page'),
       ),
     ),
@@ -119,7 +115,7 @@ class _HomePageState extends State<HomePage> {
             label: 'history',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Icon(Icons.shopping_cart),
             label: 'cart',
           ),
           BottomNavigationBarItem(
