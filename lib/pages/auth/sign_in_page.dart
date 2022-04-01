@@ -52,7 +52,7 @@ class SignInPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Sign into your account',
+                    'Sign in to your account',
                     style: TextStyle(
                       fontSize: Dimensions.font20,
                       color: Colors.grey[500],
@@ -82,7 +82,7 @@ class SignInPage extends StatelessWidget {
                 Expanded(child: Container()),
                 RichText(
                   text: TextSpan(
-                    text: 'Sign into your account',
+                    text: 'Sign in to your account',
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: Dimensions.font20,
