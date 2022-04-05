@@ -121,6 +121,9 @@ class CartHistory extends StatelessWidget {
                                             children: List.generate(
                                               itemsPerOrder[i],
                                               (index) {
+                                                // var hideItems =
+                                                //     getCartHistoryList.length -
+                                                //         3;
                                                 if (listCounter <
                                                     getCartHistoryList.length) {
                                                   listCounter++;
@@ -132,7 +135,7 @@ class CartHistory extends StatelessWidget {
                                                             4,
                                                         width:
                                                             Dimensions.width20 *
-                                                                4,
+                                                                8,
                                                         margin: EdgeInsets.only(
                                                             right: Dimensions
                                                                     .width10 /
