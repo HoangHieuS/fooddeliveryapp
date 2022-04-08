@@ -135,7 +135,7 @@ class CartHistory extends StatelessWidget {
                                                             4,
                                                         width:
                                                             Dimensions.width20 *
-                                                                8,
+                                                                4,
                                                         margin: EdgeInsets.only(
                                                             right: Dimensions
                                                                     .width10 /
