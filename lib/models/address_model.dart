@@ -19,6 +19,7 @@ class AddressModel {
     _addressType = addressType;
     _contactPersonName = contactPersonName;
     _contactPersonNumber = contactPersonNumber;
+    _address = address;
     _latitude = latitude;
     _longitude = longitude;
   }
@@ -30,12 +31,12 @@ class AddressModel {
   String get longitude => _longitude;
 
   AddressModel.fromJson(Map<String, dynamic> json) {
-    _id = json['id'];
-    _addressType = json['address_type'] ?? "";
-    _contactPersonNumber = json['contact_person_number'] ?? "";
-    _contactPersonName = json['contact_person_name'] ?? "";
-    _address = json['address'];
-    _latitude = json['latitude'];
-    _longitude = json['longitude'];
+    _id = json["id"];
+    _addressType = json["address_type"] ?? "";
+    _contactPersonNumber = json["contact_person_number"] ?? "";
+    _contactPersonName = json["contact_person_name"] ?? "";
+    _address = json["address"];
+    _latitude = json["latitude"];
+    _longitude = json["longitude"];
   }
 }

@@ -20,27 +20,28 @@ class _AddAddressPageState extends State<AddAddressPage> {
   final TextEditingController _contactPersonNumber = TextEditingController();
   late bool _isLogged;
   CameraPosition _cameraPosition =
-      const CameraPosition(target: LatLng(10.762622, 106.660172), zoom: 17);
-  late LatLng _initialPosition;
+      const CameraPosition(target: LatLng(10.3499986, 107.0666664), zoom: 17);
+  late LatLng _initialPosition = LatLng(10.3499986, 107.0666664);
 
   @override
   void initState() {
+    super.initState();
     _isLogged = Get.find<AuthController>().userLoggedIn();
     if (_isLogged && Get.find<UserController>().userModel == null) {
       Get.find<UserController>().getUserInfo();
     }
     if (Get.find<LocationController>().addressList.isNotEmpty) {
       _cameraPosition = CameraPosition(
-          target: LatLng(
-        double.parse(Get.find<LocationController>().getAddress['latitude']),
-        double.parse(Get.find<LocationController>().getAddress['longitude']),
-      ));
+        target: LatLng(
+          double.parse(Get.find<LocationController>().getAddress['latitude']),
+          double.parse(Get.find<LocationController>().getAddress['longitude']),
+        ),
+      );
       _initialPosition = LatLng(
         double.parse(Get.find<LocationController>().getAddress['latitude']),
         double.parse(Get.find<LocationController>().getAddress['longitude']),
       );
     }
-    super.initState();
   }
 
   @override
@@ -50,21 +51,49 @@ class _AddAddressPageState extends State<AddAddressPage> {
         title: Text('Address page'),
         backgroundColor: AppColors.mainColor,
       ),
-      body: Column(
-        children: [
-          Container(
-            height: Dimensions.height20 * 7,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                width: 2,
-                color: Theme.of(context).primaryColor,
+      body: GetBuilder<LocationController>(builder: (localationController) {
+        return Column(
+          children: [
+            Container(
+              height: Dimensions.height20 * 7,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.only(
+                left: Dimensions.width5,
+                right: Dimensions.width5,
+                top: Dimensions.height5,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius5),
+                border: Border.all(
+                  width: 2,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              child: Stack(
+                children: [
+                  GoogleMap(
+                    // mapType: MapType.hybrid,
+                    initialCameraPosition:
+                        CameraPosition(target: _initialPosition, zoom: 17),
+                    zoomControlsEnabled: false,
+                    compassEnabled: false,
+                    indoorViewEnabled: true,
+                    mapToolbarEnabled: false,
+                    onCameraIdle: () {
+                      localationController.updatePosition(
+                          _cameraPosition, true);
+                    },
+                    onCameraMove: ((position) => _cameraPosition = position),
+                    onMapCreated: (GoogleMapController controller) {
+                      localationController.setMapController(controller);
+                    },
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 }
