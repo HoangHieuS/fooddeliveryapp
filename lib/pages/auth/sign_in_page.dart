@@ -16,25 +16,25 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var emailController = TextEditingController();
+    var phoneController = TextEditingController();
     var passwordController = TextEditingController();
     void _login(AuthController authController) {
-      String email = emailController.text.trim();
+      String phone = phoneController.text.trim();
       String password = passwordController.text.trim();
 
-      if (email.isEmpty) {
-        showCustomSnackBar('Type in your email address',
-            title: 'Email address');
-      } else if (!GetUtils.isEmail(email)) {
-        showCustomSnackBar('Type in valid email address',
-            title: 'Valid email address');
+      if (phone.isEmpty) {
+        showCustomSnackBar('Type in your phone number',
+            title: 'Your phone number');
+      } else if (!GetUtils.isPhoneNumber(phone)) {
+        showCustomSnackBar('Type in valid phone number',
+            title: 'Valid phone number');
       } else if (password.isEmpty) {
         showCustomSnackBar('Type in your password', title: 'Password');
       } else if (password.length < 6) {
         showCustomSnackBar('Password can not be less than 6 characters',
             title: 'Password length');
       } else {
-        authController.login(email, password).then((status) {
+        authController.login(phone, password).then((status) {
           if (status.isSuccess) {
             Get.toNamed(RouteHelper.getInitial());
           } else {
@@ -96,9 +96,9 @@ class SignInPage extends StatelessWidget {
                       SizedBox(height: Dimensions.height20),
                       //your email
                       AppTextField(
-                        textController: emailController,
-                        hintText: 'Email',
-                        icon: Icons.email,
+                        textController: phoneController,
+                        hintText: 'Phone',
+                        icon: Icons.mobile_friendly,
                       ),
                       SizedBox(height: Dimensions.height20),
                       //your password

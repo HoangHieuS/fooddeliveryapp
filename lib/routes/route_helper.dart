@@ -35,7 +35,11 @@ class RouteHelper {
       },
       transition: Transition.fade,
     ),
-    GetPage(name: initial, page: () => HomePage()),
+    GetPage(
+      name: initial,
+      page: () => HomePage(),
+      transition: Transition.fade,
+    ),
     GetPage(
       name: popularFood,
       page: () {

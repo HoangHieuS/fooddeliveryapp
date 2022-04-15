@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:food_delivery/data/repository/location_repo.dart';
 import 'package:food_delivery/models/address_model.dart';
+import 'package:food_delivery/models/response_model.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
@@ -16,7 +17,6 @@ class LocationController extends GetxController implements GetxService {
   Placemark _placemark = Placemark();
   Placemark _pickPlacemark = Placemark();
   List<AddressModel> _addressList = [];
-  List<AddressModel> get addressList => _addressList;
   late List<AddressModel> _allAddressList;
   final List<String> _addressTypeList = ['home', 'office', 'others'];
   int _addressTypeIndex = 0;
@@ -31,9 +31,12 @@ class LocationController extends GetxController implements GetxService {
   Position get pickPosition => _pickPosition;
   Placemark get placemark => _placemark;
   Placemark get pickPlacemark => _pickPlacemark;
+  List<AddressModel> get addressList => _addressList;
+  List<AddressModel> get allAddressList => _allAddressList;
   List<String> get addressTypeList => _addressTypeList;
   Map get getAddress => _getAddress;
   int get addressTypeIndex => _addressTypeIndex;
+  GoogleMapController get mapController => _mapController;
 
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
@@ -94,6 +97,7 @@ class LocationController extends GetxController implements GetxService {
     } else {
       print('Error getting the google api');
     }
+    update();
     return _address;
   }
 
@@ -112,6 +116,51 @@ class LocationController extends GetxController implements GetxService {
 
   void setAddressTypeIndex(int index) {
     _addressTypeIndex = index;
+    update();
+  }
+
+  Future<ResponseModel> addAdress(AddressModel addressModel) async {
+    _loading = true;
+    update();
+    Response response = await locationRepo.addAddress(addressModel);
+    ResponseModel responseModel;
+    if (response.statusCode == 200) {
+      await getAddressList();
+      String message = response.body['message'];
+      responseModel = ResponseModel(true, message);
+      await saveUserAddress(addressModel);
+    } else {
+      print('Could not save the address');
+      responseModel = ResponseModel(false, response.statusText!);
+    }
+    update();
+    return responseModel;
+  }
+
+  Future<void> getAddressList() async {
+    Response response = await locationRepo.getAllAddress();
+    if (response.statusCode == 200) {
+      _addressList = [];
+      _allAddressList = [];
+      response.body.forEach((address) {
+        _addressList.add(AddressModel.fromJson(address));
+        _allAddressList.add(AddressModel.fromJson(address));
+      });
+    } else {
+      _addressList = [];
+      _allAddressList = [];
+    }
+    update();
+  }
+
+  Future<bool> saveUserAddress(AddressModel addressModel) async {
+    String userAddress = jsonEncode(addressModel.toJson());
+    return await locationRepo.saveUserAddress(userAddress);
+  }
+
+  void clearAddressList() {
+    _addressList = [];
+    _allAddressList = [];
     update();
   }
 }
