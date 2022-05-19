@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/popular_product_controller.dart';
-import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/controllers/controllers.dart';
 import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:food_delivery/utils/utils.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {

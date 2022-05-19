@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_icon.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/utils/utils.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 
 class AccountWidget extends StatelessWidget {
   AppIcon appIcon;
@@ -34,7 +33,7 @@ class AccountWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 1,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
             color: Colors.grey.withOpacity(0.2),
           ),
         ],

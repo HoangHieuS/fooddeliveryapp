@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:food_delivery/utils/utils.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController textController;
@@ -31,7 +30,7 @@ class AppTextField extends StatelessWidget {
           BoxShadow(
             blurRadius: 3,
             spreadRadius: 1,
-            offset: Offset(1, 1),
+            offset: const Offset(1, 1),
             color: Colors.grey.withOpacity(0.2),
           ),
         ],
@@ -50,7 +49,7 @@ class AppTextField extends StatelessWidget {
           //focusedBorder
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(Dimensions.radius15),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 1.0,
               color: Colors.white,
             ),
@@ -58,7 +57,7 @@ class AppTextField extends StatelessWidget {
           //enabledBorder
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(Dimensions.radius15),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 1.0,
               color: Colors.white,
             ),

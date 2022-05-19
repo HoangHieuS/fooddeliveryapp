@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+import 'package:food_delivery/utils/utils.dart';
 
 class SmallText extends StatelessWidget {
   Color color;

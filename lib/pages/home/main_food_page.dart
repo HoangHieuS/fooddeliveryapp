@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/popular_product_controller.dart';
-import 'package:food_delivery/controllers/recommended_product_controller.dart';
-import 'package:food_delivery/pages/home/food_page_body.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/big_text.dart';
-import 'package:food_delivery/widgets/small_text.dart';
+import 'package:food_delivery/controllers/controllers.dart';
+import 'package:food_delivery/pages/pages.dart';
+import 'package:food_delivery/utils/utils.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 import 'package:get/get.dart';
 
 class MainFoodPage extends StatefulWidget {
@@ -70,7 +67,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: FoodPageBody(),
             ),

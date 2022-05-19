@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/base/custom_loader.dart';
-import 'package:food_delivery/controllers/auth_controller.dart';
-import 'package:food_delivery/controllers/cart_controller.dart';
-import 'package:food_delivery/controllers/location_controller.dart';
-import 'package:food_delivery/controllers/user_controller.dart';
+import 'package:food_delivery/base/base.dart';
+import 'package:food_delivery/controllers/controllers.dart';
 import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/account_widget.dart';
-import 'package:food_delivery/widgets/app_icon.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/utils/utils.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 import 'package:get/get.dart';
 
 class AccountPage extends StatelessWidget {
@@ -197,8 +191,8 @@ class AccountPage extends StatelessWidget {
                       ],
                     ),
                   )
-                : CustomLoader())
-            : Container(
+                : const CustomLoader())
+            :  SizedBox(
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -213,7 +207,7 @@ class AccountPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.circular(Dimensions.radius20),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             fit: BoxFit.cover,
                             image:
                                 AssetImage('assets/image/signintocontinue.png'),

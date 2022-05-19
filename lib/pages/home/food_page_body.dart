@@ -1,17 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/popular_product_controller.dart';
-import 'package:food_delivery/controllers/recommended_product_controller.dart';
-import 'package:food_delivery/models/products_model.dart';
-import 'package:food_delivery/pages/food/popular_food_detail.dart';
+import 'package:food_delivery/controllers/controllers.dart';
+import 'package:food_delivery/models/models.dart';
 import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/app_constants.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_column.dart';
-import 'package:food_delivery/widgets/big_text.dart';
-import 'package:food_delivery/widgets/icon_and_text_widget.dart';
-import 'package:food_delivery/widgets/small_text.dart';
+import 'package:food_delivery/utils/utils.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {

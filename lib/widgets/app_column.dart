@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/big_text.dart';
-import 'package:food_delivery/widgets/icon_and_text_widget.dart';
-import 'package:food_delivery/widgets/small_text.dart';
+import 'package:food_delivery/utils/utils.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;
@@ -27,7 +24,7 @@ class AppColumn extends StatelessWidget {
             Wrap(
               children: List.generate(
                 5,
-                (index) => Icon(
+                (index) => const Icon(
                   Icons.star,
                   color: AppColors.mainColor,
                 ),
@@ -44,7 +41,7 @@ class AppColumn extends StatelessWidget {
         SizedBox(height: Dimensions.height15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             IconAndTextWidget(
               icon: Icons.circle_sharp,
               text: 'Normal',

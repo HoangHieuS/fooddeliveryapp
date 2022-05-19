@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/auth_controller.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:get/get.dart';
+import 'package:food_delivery/utils/utils.dart';
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({Key? key}) : super(key: key);
@@ -18,7 +15,7 @@ class CustomLoader extends StatelessWidget {
           color: AppColors.mainColor,
         ),
         alignment: Alignment.center,
-        child: CircularProgressIndicator(color: Colors.white),
+        child: const CircularProgressIndicator(color: Colors.white),
       ),
     );
   }

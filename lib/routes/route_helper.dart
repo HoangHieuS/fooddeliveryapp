@@ -1,10 +1,4 @@
-import 'package:food_delivery/pages/address/add_address_page.dart';
-import 'package:food_delivery/pages/auth/sign_in_page.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
-import 'package:food_delivery/pages/food/popular_food_detail.dart';
-import 'package:food_delivery/pages/food/recommended_food_detail.dart';
-import 'package:food_delivery/pages/home/home_page.dart';
-import 'package:food_delivery/pages/splash/splash_page.dart';
+import 'package:food_delivery/pages/pages.dart';
 import 'package:get/route_manager.dart';
 
 class RouteHelper {

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controllers/auth_controller.dart';
-import 'package:food_delivery/controllers/location_controller.dart';
-import 'package:food_delivery/controllers/user_controller.dart';
-import 'package:food_delivery/models/address_model.dart';
+import 'package:food_delivery/controllers/controllers.dart';
+import 'package:food_delivery/models/models.dart';
 import 'package:food_delivery/routes/route_helper.dart';
-import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/widgets/app_icon.dart';
-import 'package:food_delivery/widgets/app_text_field.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/utils/utils.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

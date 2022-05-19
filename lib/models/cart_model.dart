@@ -1,4 +1,4 @@
-import 'package:food_delivery/models/products_model.dart';
+import 'package:food_delivery/models/models.dart';
 
 class CartModel {
   int? id;

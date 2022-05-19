@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:food_delivery/data/repository/location_repo.dart';
-import 'package:food_delivery/models/address_model.dart';
-import 'package:food_delivery/models/response_model.dart';
+import 'package:food_delivery/data/repository/repository.dart';
+import 'package:food_delivery/models/models.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';

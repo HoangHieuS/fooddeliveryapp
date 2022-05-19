@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/pages/account/account_page.dart';
-import 'package:food_delivery/pages/auth/sign_up_page.dart';
-import 'package:food_delivery/pages/cart/cart_history.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
-import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/pages/pages.dart';
+import 'package:food_delivery/utils/utils.dart';
 // import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +16,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages = [
     const MainFoodPage(),
-    Container(
+     Container(
       child: Center(child: Text('History page')),
     ),
     const CartHistory(),

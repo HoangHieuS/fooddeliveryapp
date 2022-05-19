@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/widgets/widgets.dart';
 import 'package:get/get.dart';
 
 void showCustomSnackBar(String message,
